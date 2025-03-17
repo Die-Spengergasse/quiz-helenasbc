@@ -15,10 +15,13 @@ public class Main {
         TypedQuery<Question> query = em.createQuery("select q from Question q", Question.class);
         List<Question> questions = query.getResultList();
 
-        for(Question q : questions) {
-
-            System.out.println(q);
+        if(questions.isEmpty())
+        {
+            System.out.println("There");
         }
+
+        Quiz quiz = new Quiz(questions);
+        quiz.startQuiz();
         em.close();
     }
 }
